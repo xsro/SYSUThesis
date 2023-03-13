@@ -1,165 +1,108 @@
 {
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "xelatex ➞ bibtex ➞ xelatex × 2",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
-        },
-        {
-            "name": "latexmk 🔃",
-            "tools": [
-                "latexmk"
-            ]
-        },
-        {
-            "name": "latexmk (latexmkrc)",
-            "tools": [
-                "latexmk_rconly"
-            ]
-        },
-        {
-            "name": "latexmk (lualatex)",
-            "tools": [
-                "lualatexmk"
-            ]
-        },
-        {
-            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
-        },
-        {
-            "name": "Compile Rnw files",
-            "tools": [
-                "rnw2tex",
-                "latexmk"
-            ]
-        },
-        {
-            "name": "Compile Jnw files",
-            "tools": [
-                "jnw2tex",
-                "latexmk"
-            ]
-        },
-        {
-            "name": "tectonic",
-            "tools": [
-                "tectonic"
-            ]
-        }
-    ],
+    //tex 相关配置
+    "explorer.fileNesting.patterns": {
+      "*.tex": "${basename}.aux,${basename}.thm,${basename}.bbl,${basename}.bcf,${basename}.blg,${basename}.log,${basename}.out,${basename}.run.xml,${basename}.toc,${basename}.xdv,${basename}.snm,${basename}.fdb_latexmk,${basename}.fls,${basename}.nav,${basename}.synctex.gz,${basename}.vrb,${basename}.synctex(busy),${basename}.bcf,${basename}.soc,${basename}.loc",
+      "*.typ": "${basename}.pdf"
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    // 编译工具
     "latex-workshop.latex.tools": [
-        {
-            "name": "xelatex",
-            "command": "xelatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "--shell-escape",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "lualatexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-lualatex",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "latexmk_rconly",
-            "command": "latexmk",
-            "args": [
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "rnw2tex",
-            "command": "Rscript",
-            "args": [
-                "-e",
-                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
-            ],
-            "env": {}
-        },
-        {
-            "name": "jnw2tex",
-            "command": "julia",
-            "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
-            ],
-            "env": {}
-        },
-        {
-            "name": "jnw2texmintex",
-            "command": "julia",
-            "args": [
-                "-e",
-                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
-            ],
-            "env": {}
-        },
-        {
-            "name": "tectonic",
-            "command": "tectonic",
-            "args": [
-                "--synctex",
-                "--keep-logs",
-                "%DOC%.tex"
-            ],
-            "env": {}
-        }
+      {
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          // "-pdf",
+          "-shell-escape",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        "name": "pdflatex",
+        "command": "pdflatex",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "%DOCFILE%"
+        ]
+      },
+      {
+        "name": "bibtex",
+        "command": "bibtex",
+        "args": [
+          "%DOCFILE%"
+        ]
+      },
+      {
+        "name": "biber",
+        "command": "biber",
+        "args": [
+          "%DOCFILE%"
+        ]
+      }
     ],
-    "latex-workshop.latex.recipe.default": "first"
-}
+    // 编译命令
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "xelatex",
+        "tools": [
+          "xelatex"
+        ],
+      },
+      {
+        "name": "xelatex*2",
+        "tools": [
+          "xelatex",
+          "xelatex"
+        ],
+      },
+      {
+        "name": "pdflatex",
+        "tools": [
+          "pdflatex"
+        ]
+      },
+      {
+        "name": "xe->bib->xe->xe",
+        "tools": [
+          "xelatex",
+          "bibtex",
+          "xelatex",
+          "xelatex"
+        ]
+      },
+      {
+        "name": "xe->biber->xe->xe",
+        "tools": [
+          "xelatex",
+          "biber",
+          "xelatex",
+          "xelatex"
+        ]
+      },
+      {
+        "name": "pdf->bib->pdf->pdf",
+        "tools": [
+          "pdflatex",
+          "bibtex",
+          "pdflatex",
+          "pdflatex"
+        ]
+      },
+      {
+        "name": "pdf->biber->pdf->pdf",
+        "tools": [
+          "pdflatex",
+          "biber",
+          "pdflatex",
+          "pdflatex"
+        ]
+      }
+    ],
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.recipe.default": "xelatex"
+  }

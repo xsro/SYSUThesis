@@ -5,8 +5,11 @@
 \ProcessOptions\relax
 
 \LoadClass[
-    %fontset=fandol,  % 可用于overleaf的中文字体库
-    fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
+    %fontset=adobe,
+    %fontset=fandol,    % texlive自带，可移植字体库，只有常用的6763个汉字
+    %fontset=ubuntu,
+    %fontset=mac,
+    % fontset=windows,
     a4paper,
     openany
     %zihao=-4
@@ -68,7 +71,7 @@
 
 % 参考文献引用标记格式：右上角，带方括号
 % 合并相邻的参考文献
-\RequirePackage[comma,square,super,sort&compress]{natbib}
+% \RequirePackage[comma,square,super,sort&compress]{natbib}
 
 \AtBeginDocument{
     \hypersetup{CJKbookmarks=true}
@@ -152,7 +155,7 @@
 
 \newcommand\mybold[1]{\textit{\textbf{#1}}}
 
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %范数定义
 \newtheoremstyle{dotless}{3pt}{3pt}{\kaishu}{2em}{\heiti}{}{\ccwd}{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{{定理}}[chapter]
@@ -445,8 +448,16 @@
 }
 
 % 参考文献
+% 参考文献引用标记格式：右上角，带方括号
+% 增加参考文献引用支持
+\RequirePackage[backend=biber,autolang=hyphen,style=gb7714-2015,
+gbtype=true,gbalign=gb7714-2015,
+doi=false,url=false,isbn=false]{biblatex}
+% 引入参考文献数据库
+\addbibresource[location=local]{reference.bib}
 % 标题与正文章节标题相同
 % 内容小五号宋体
+\renewcommand*{\bibfont}{\zihao{5}\rmfamily\songti}
 \newcommand\makereferences{
     \begingroup
         \ctexset {
@@ -455,11 +466,7 @@
                 titleformat = {\zihao{3}\heiti}
             }
         }
-        % 每一个引用之间不添加多余间距
-        \setlength{\bibsep}{0em}
-        % 引用样式
-        \bibliographystyle{gbt7714-numerical}
-        {\zihao{5}\rmfamily\songti\bibliography{reference}}    % 引用文献列表
+        \printbibliography
     \endgroup
 }
 
