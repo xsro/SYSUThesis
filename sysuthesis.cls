@@ -9,7 +9,7 @@
     %fontset=fandol,    % texlive自带，可移植字体库，只有常用的6763个汉字
     %fontset=ubuntu,
     %fontset=mac,
-    fontset=windows,
+    % fontset=windows,
     a4paper,
     %openright,
     openany,
@@ -181,7 +181,7 @@
 \addtolength{\cftchapnumwidth}{3\ccwd}
 \newcommand\mybold[1]{\textit{\textbf{#1}}}
 
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %范数定义
 \newtheoremstyle{dotless}{3pt}{3pt}{\kaishu}{2em}{\heiti}{}{\ccwd}{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{{定理}}[chapter]
@@ -412,10 +412,15 @@
 
 % 参考文献
 % 参考文献引用标记格式：右上角，带方括号
-% 合并相邻的参考文献
-\RequirePackage[comma,square,super,sort&compress]{natbib}
+% 增加参考文献引用支持
+\RequirePackage[backend=biber,autolang=hyphen,style=gb7714-2015,
+gbtype=true,gbalign=gb7714-2015,
+doi=false,url=false,isbn=false]{biblatex}
+% 引入参考文献数据库
+\addbibresource[location=local]{reference.bib}
 % 标题与正文章节标题相同
 % 内容小五号宋体
+\renewcommand*{\bibfont}{\zihao{5}\rmfamily\songti}
 \newcommand\makereferences{
     \begingroup
         \ctexset {
@@ -424,6 +429,7 @@
                 titleformat = {\zihao{-2}\heiti}
             }
         }
+        \printbibliography
     \endgroup
 }
 
