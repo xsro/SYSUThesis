@@ -198,6 +198,7 @@
 \newcommand\covertitlefirst[1]{\def\@covertitlefirst{#1}}
 \newcommand\covertitlesecond[1]{\def\@covertitlesecond{#1}}
 \newcommand\covertitlethird[1]{\def\@covertitlethird{#1}}
+\newcommand\covertitleforth[1]{\def\@covertitleforth{#1}}
 \newcommand\cauthor[1]{\def\@cauthor{#1}} % 默认中文名为封面作者名字
 \newcommand\eauthor[1]{\def\@eauthor{#1}}
 \newcommand\cmajor[1]{\def\@cmajor{#1}}
@@ -217,9 +218,12 @@
 
             {\fontsize{12}{10}\selectfont
             \begin{tabular}{l}
-            	\hfill\zihao{3}\heiti\@covertitlefirst\hfill\\\vspace{1pt}\\
-            	\hfill\zihao{3}\@covertitlesecond\hfill\\\vspace{1pt}\\
-            	\hfill\zihao{3}\@covertitlethird\hfill\\\vspace{20pt}\\
+            	\hfill\zihao{3}\heiti\@covertitlefirst\hfill \\ [-1ex] \\
+            	\hfill\zihao{3}\heiti\@covertitlesecond\hfill \\ [-1ex] \\
+            	\hfill\zihao{3}\heiti\@covertitlethird\hfill\\\vspace{20pt}\\
+            	% 若需要两行中文标题及两行英文标题，则注释掉上面一行，启用下面两行（issue #5）            	
+%            	\hfill\zihao{3}\heiti\@covertitlethird\hfill \\ [-1ex] \\
+%            	\hfill\zihao{3}\heiti\@covertitleforth\hfill\\\vspace{20pt}\\
             \end{tabular}
         	
         	\begin{tabular}{ll}
