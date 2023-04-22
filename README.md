@@ -24,7 +24,6 @@ tlmgr update --self --all
 1. 感谢[@yangtzech](https://github.com/yangtzech)在本项目正式发布以来一直对本项目的关注和支持，对sysuthesis.cls文件代码进行大量简化和改进并且对gitignore文件添加了许多内容。
 1. 感谢B. CAI对本项目的宣传。
 1. 感谢J. LI、[@Changkun Shao](https://github.com/ShaoChangk)、[@marc-antoine233](https://github.com/marc-antoine233)、Y. YANG同学为本模板提供参考示例。
-（注：contributors不再单独进行致谢。）
 
 ## 错误反馈以及改进
 一个人的力量有限，希望大家踊跃提出自己的想法，对于不符合格式要求的内容和部分过于丑陋的代码提交pull request和issue，一起完善和改进该 $\LaTeX$ 模板， Make **SYSU** Great Again！
