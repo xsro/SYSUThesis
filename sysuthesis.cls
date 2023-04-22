@@ -25,7 +25,7 @@
 \setCJKmainfont{SimSun}[AutoFakeBold]
 
 \RequirePackage{fancyhdr}
-\RequirePackage[top=1in, bottom=1in, left=1.25in, right=1.25in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
+\RequirePackage[top=1in, bottom=1in, left=1in, right=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
 \RequirePackage{booktabs}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
@@ -290,16 +290,6 @@
 % 中文摘要、关键字内容：小四号宋体
 
 \newcommand\makecabstract{
-	\ctexset{
-		section = {
-			titleformat = {\zihao{4}\heiti},
-			beforeskip = {10pt},
-			afterskip = {20pt}
-		},
-		paragraph/format = {}
-	}
-	
-	\addcontentsline{toc}{chapter}{摘\hspace{\ccwd}要}
 	\begin{center}
 		\zihao{3}
 		\mbox{ }\\
@@ -311,29 +301,20 @@
 			硕\hspace{0.5\ccwd}士\hspace{0.5\ccwd}生：\@cauthor \\
 			指导教师：\@cmentor
 		\end{tabular}
-		\vspace{\baselineskip}\\ 
-		\zihao{3}\heiti\textbf{摘\hspace{2em}要}
+		\vspace{\baselineskip}
+		\section*{\zihao{3}\heiti\textbf{摘\hspace{2em}要}}  % issue #4
 	\end{center}		
 		\begin{spacing}{1.6}
 			\zihao{-4} \songti\@cabstract
 			~\\
 		\end{spacing}
 	\zihao{-4}\textbf{关键词：}\@ckeywords
+	\addcontentsline{toc}{chapter}{摘要}
 }
 
 % 英文摘要、关键字标题：小四号新罗马体(Time New Roman)加粗并加方括号
 % 英文摘要、关键字内容：小四号新罗马体(Time New Roman)
 \newcommand\makeeabstract{
-	\ctexset{
-		section = {
-			titleformat = {\zihao{4}\textbf},
-			beforeskip = {10pt},
-			afterskip = {20pt}
-		}
-	}
-	
-	\addcontentsline{toc}{chapter}{ABSTRACT}
-	
 	\begin{center}
 		\zihao{3}
 		\mbox{ }\\
@@ -345,8 +326,8 @@
 			Name: \@eauthor \\
 			Supervisor: \@ementor
 		\end{tabular}
-		\vspace{\baselineskip}\\
-		\zihao{3} \textbf{ABSTRACT}
+		\vspace{\baselineskip}
+		\section*{\zihao{3}\textbf{ABSTRACT}}  % issue #4
 	\end{center}
 		\begin{spacing}{1.6}
 			\zihao{-4} \@eabstract
@@ -355,7 +336,7 @@
 	\begin{spacing}{1.6}
 		\noindent\zihao{-4}\textbf{Keywords: }\@ekeywords
 	\end{spacing}
-		%\paragraph{\textbf{Keywords: }}\zihao{-4}\indent \@ekeywords
+	\addcontentsline{toc}{chapter}{ABSTRACT}
 }
 
 \newcommand\makeabstract{
