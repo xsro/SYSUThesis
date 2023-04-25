@@ -21,7 +21,6 @@ tlmgr update --self --all
 1. [biblatex-gb7714-2015: a biblatex style package](https://github.com/hushidong/biblatex-gb7714-2015)
 
 ## 致谢
-1. 感谢[@yangtzech](https://github.com/yangtzech)在本项目正式发布以来一直对本项目的关注和支持，对sysuthesis.cls文件代码进行大量简化和改进并且对gitignore文件添加了许多内容。
 1. 感谢B. CAI对本项目的宣传。
 1. 感谢J. LI、[@Changkun Shao](https://github.com/ShaoChangk)、[@marc-antoine233](https://github.com/marc-antoine233)、Y. YANG同学为本模板提供参考示例。
 
