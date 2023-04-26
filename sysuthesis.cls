@@ -301,15 +301,16 @@
 			硕\hspace{0.5\ccwd}士\hspace{0.5\ccwd}生：\@cauthor \\
 			指导教师：\@cmentor
 		\end{tabular}
-		\vspace{\baselineskip}
-		\section*{\zihao{3}\heiti\textbf{摘\hspace{2em}要}}  % issue #4
+		\vspace{\baselineskip}\\
+        \phantomsection
+		{\zihao{3}\heiti\textbf{摘\hspace{2em}要}}  % issue #4
+        \addcontentsline{toc}{chapter}{摘要}
 	\end{center}		
 		\begin{spacing}{1.6}
 			\zihao{-4} \songti\@cabstract
-			~\\
 		\end{spacing}
+        \vspace{\baselineskip}
 	\zihao{-4}\textbf{关键词：}\@ckeywords
-	\addcontentsline{toc}{chapter}{摘要}
 }
 
 % 英文摘要、关键字标题：小四号新罗马体(Time New Roman)加粗并加方括号
@@ -326,17 +327,16 @@
 			Name: \@eauthor \\
 			Supervisor: \@ementor
 		\end{tabular}
-		\vspace{\baselineskip}
-		\section*{\zihao{3}\textbf{ABSTRACT}}  % issue #4
+		\vspace{\baselineskip}\\
+        \phantomsection
+		{\zihao{3}\textbf{ABSTRACT}}  % issue #4
+        \addcontentsline{toc}{chapter}{ABSTRACT}
 	\end{center}
 		\begin{spacing}{1.6}
 			\zihao{-4} \@eabstract
-			~\\
 		\end{spacing}
-	\begin{spacing}{1.6}
-		\noindent\zihao{-4}\textbf{Keywords: }\@ekeywords
-	\end{spacing}
-	\addcontentsline{toc}{chapter}{ABSTRACT}
+        \vspace{\baselineskip}
+		\zihao{-4}\textbf{Keywords: }\@ekeywords
 }
 
 \newcommand\makeabstract{
