@@ -6,10 +6,10 @@
 
 \LoadClass[
     %fontset=adobe,
-    %fontset=fandol,    % texlive自带，可移植字体库，只有常用的6763个汉字
+    fontset=fandol,  % 可用于overleaf的中文字体库
     %fontset=ubuntu,
     %fontset=mac,
-    fontset=windows,
+    %fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
     a4paper,
     %openright,
     openany,
@@ -22,7 +22,8 @@
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 % 解决宋体无法加粗问题（https://zhuanlan.zhihu.com/p/505601359）
-\setCJKmainfont{SimSun}[AutoFakeBold]
+%\setCJKmainfont{SimSun}[AutoFakeBold]
+% 若出现生僻字无法显示或者需要使用windows自带字体，则解除上面一行的注释状态即可
 
 \RequirePackage{fancyhdr}
 \RequirePackage[top=1in, bottom=1in, left=1in, right=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
@@ -34,11 +35,6 @@
 \RequirePackage{float}
 \RequirePackage[font=footnotesize]{subcaption}
 \RequirePackage{amsmath,amssymb,amsthm}
-% 设置公式字体为 XITS Math 或者 STIX Two Math，这两种字体与 Times New Roman 接近，以保证字体统一
-\RequirePackage{unicode-math}
-% \setmathfont{XITS Math}
-\setmathfont{STIX Two Math}
-\setmathfont{STIX Two Math}[AutoFakeBold]
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage[section]{placeins}
@@ -256,11 +252,10 @@
   	    }
             \vfill
 
-            \zihao{-3}
+            \zihao{-5}
             {\centering
-                {\qquad 年 \qquad 月 \qquad 日}
-%            	\ctexset{today=big}         % 汉字数字形式日期
-%            	\today     \\ % 使用最后一次编译的日期, 实现日期的自动化
+                {二〇二二\ 年\ 五\ 月}
+				% 使用全中文年月，封面会更正式
             }
 
         \end{center}
@@ -399,8 +394,7 @@
         }
     }
 
-    \zihao{-4} \linespread{1.56}\selectfont
-    % latex中定义为1.56行距，相当于word中1.5倍行距
+    \zihao{-4} \linespread{1.5}\selectfont
     \pagestyle{plain}
 }
 
