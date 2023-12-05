@@ -95,6 +95,7 @@
 
 \AtBeginDocument{
     \hypersetup{
+    	colorlinks=true,
         citecolor=green,
         filecolor=black,
         linkcolor=black,
@@ -344,12 +345,11 @@
 
 \newcommand\makeabstract{
 	\setcounter{page}{1}
+	\pagestyle{cAbstract}
 	\makecabstract
-	\thispagestyle{cAbstract}
 	\newclearpage
-	
 	\makeeabstract
-	\thispagestyle{eAbstract}
+	\pagestyle{eAbstract}
 	\newclearpage
 }
 \newcommand\maketableofcontents{
