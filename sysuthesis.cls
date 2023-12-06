@@ -126,9 +126,7 @@
     % 页码位于页脚居中
     \fancyfoot[C]{\zihao{-5}\thepage}
     % 居中式页眉，奇数页内容为中山大学硕士/博士学位论文
-    \fancyhead[CO]{\zihao{-5}中山大学硕士学位论文}
-    % 居中式页眉，偶数页内容为中文标题
-    \fancyhead[CE]{\zihao{-5} \@ctitle }
+    \fancyhead[C]{\zihao{-5}中山大学博士/硕士学位论文}
 }
 \pagestyle{plain}
 
