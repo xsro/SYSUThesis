@@ -95,7 +95,7 @@
 
 \AtBeginDocument{
     \hypersetup{
-    	colorlinks=true,
+    	% colorlinks=true,
         citecolor=green,
         filecolor=black,
         linkcolor=black,
