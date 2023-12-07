@@ -12,35 +12,35 @@
 \maketitle    % 封面
 % 定稿打印的论文需在扉页、学术诚信声明后添加空白页以保证这两部分内容各自独占一张纸，同时根据情况添加空白页以保证正文第一页为奇数页面，送盲审论文则可以不用添加空白页。
 % 双数页面为空白页
-\cleardoublepage
+%\cleardoublepage
 \makedisclaim    % 学术诚信声明
 % 双数页面为空白页
-\cleardoublepage
+%\cleardoublepage
 \makeabstract       % 中英文摘要
 \maketableofcontents        % 目录
-\newclearpage
-\include{docs/abbr}
+\clearpage
+%\include{docs/abbr}
 % 双数页面为空白页
-\cleardoublepage
+%\cleardoublepage
 
 % 论文主体部分
 \mainmatter
 % 正文
 % 硕士学位论文一般有5到6章，博士学位论文一般有6到7章
 \include{docs/chap01}
-\newclearpage
+\clearpage
 \include{docs/chap02}
-\newclearpage
+\clearpage
 \include{docs/chap03}
-\newclearpage
+\clearpage
 \include{docs/chap04}
-\newclearpage
+\clearpage
 \include{docs/chap05}
-\newclearpage
+\clearpage
 %\include{docs/chap06}
-%\newclearpage
+%\clearpage
 %\include{docs/chap07}
-%\newclearpage
+%\clearpage
 
 % 附录部分
 \backmatter
@@ -52,17 +52,15 @@
 % 引用样式
 \bibliographystyle{bibtex-style/gbt7714-numerical}
 {\zihao{5}\rmfamily\songti\bibliography{reference}}    % 引用文献列表
-\newclearpage
-\include{docs/publications}
+\clearpage
+%\include{docs/publications}
 % 致谢
 % 送盲审论文暂时不需要致谢，将下面一行代码注释掉即可，待论文答辩、定稿打印时再添加致谢
 \include{docs/ack}
-\newclearpage
+\clearpage
 % 附录
 \begin{appendix}
 \include{docs/appendix1}
 \include{docs/appendix2}
 \end{appendix}
-% \cleardoublepage
-% \include{docs/Postscript}    % 中山大学学位论文版权使用授权书
 \end{document}

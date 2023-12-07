@@ -16,7 +16,7 @@
     zihao=-4
 ]{ctexbook}
 
-\def\@printtwoside{0} % 设置文章为电子版格式（不添加多余空白页）
+%\def\@printtwoside{0} % 设置文章为电子版格式（不添加多余空白页）
 
 % 配置英文字体
 \RequirePackage{fontspec}
@@ -26,7 +26,7 @@
 % 若出现生僻字无法显示或者需要使用windows自带字体，则解除上面一行的注释状态即可
 
 \RequirePackage{fancyhdr}
-\RequirePackage[top=1in, bottom=1in, left=1in, right=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
+\RequirePackage[margin=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
 \RequirePackage{booktabs}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
@@ -77,25 +77,24 @@
     }
 }
 % 定义了一种新的clearpage方式，允许一个变量切换电子版及双面打印版
-\newcommand{\newclearpage}{
-    \if\@printtwoside1
-        \clearemptydoublepage
-    \else
-        \clearpage
-    \fi
-}
+%\newcommand{\newclearpage}{
+%    \if\@printtwoside1
+%        \clearemptydoublepage
+%    \else
+%        \clearpage
+%    \fi
+%}
 
 % 设定时间为中文日期
-\ctexset{today=small}
-
-% 定义英文日期格式
-\newcommand\etoday{
-  \hspace{0.5\ccwd} \monthname[\the\month]\hspace{2\ccwd} \nth{\the\day}{\hspace{1\ccwd}} \the\year
-}
+%\ctexset{today=small}
+%
+%% 定义英文日期格式
+%\newcommand\etoday{
+%  \hspace{0.5\ccwd} \monthname[\the\month]\hspace{2\ccwd} \nth{\the\day}{\hspace{1\ccwd}} \the\year
+%}
 
 \AtBeginDocument{
     \hypersetup{
-    	% colorlinks=true,
         citecolor=green,
         filecolor=black,
         linkcolor=black,
@@ -125,14 +124,17 @@
     \renewcommand{\headrulewidth}{0.5pt}
     % 页码位于页脚居中
     \fancyfoot[C]{\zihao{-5}\thepage}
-    % 居中式页眉，奇数页内容为中山大学硕士/博士学位论文
-    \fancyhead[C]{\zihao{-5}中山大学博士/硕士学位论文}
+    % 居中式页眉
+    \fancyhead[C]{\zihao{-5}中山大学硕士学位论文}
 }
 \pagestyle{plain}
 
 % 中英文摘要页面样式
 \fancypagestyle{cAbstract}{}
 \fancypagestyle{eAbstract}{}
+
+% 表格拆分单元格
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 
 % 表格与图片标题设定
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
@@ -254,13 +256,13 @@
 
             \zihao{-5}
             {\centering
-                {二〇二二\ 年\ 五\ 月}
+                {二〇二二年五月}
 				% 使用全中文年月，封面会更正式
             }
 
         \end{center}
     \end{titlepage}
-    \newclearpage
+    \clearpage
 }
 
 
@@ -278,7 +280,7 @@
     }
     \input{docs/disclaim}
     \thispagestyle{empty}
-    \newclearpage
+    \clearpage
 }
 
 % 摘要
@@ -345,15 +347,15 @@
 	\setcounter{page}{1}
 	\pagestyle{cAbstract}
 	\makecabstract
-	\newclearpage
+	\clearpage
 	\makeeabstract
 	\pagestyle{eAbstract}
-	\newclearpage
+	\clearpage
 }
 \newcommand\maketableofcontents{
     \tocloftpagestyle{plain}
     \tableofcontents
-    \newclearpage
+    \clearpage
 }
 
 \renewcommand\mainmatter{
