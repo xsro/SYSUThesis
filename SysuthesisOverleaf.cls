@@ -1,12 +1,12 @@
 % 定义模板样式
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{sysuthesis}[2017/05/06 v4.5.3 Sun Yat-Sen University undergraduate thesis document class]
+\ProvidesClass{SysuthesisOverleaf}[2017/05/06 v4.5.3 Sun Yat-Sen University undergraduate thesis document class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
 \LoadClass[
     %fontset=adobe,
-    fontset=fandol,  % 可用于overleaf的中文字体库
+    %fontset=fandol,  % 可用于overleaf的中文字体库
     %fontset=ubuntu,
     %fontset=mac,
     %fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
