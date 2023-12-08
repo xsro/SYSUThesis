@@ -1,6 +1,6 @@
 % 定义模板样式
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{SysuthesisOverleaf}[2017/05/06 v4.5.3 Sun Yat-Sen University undergraduate thesis document class]
+\ProvidesClass{SysuthesisOverleaf}[2022/05/06 Sun Yat-Sen University undergraduate thesis document class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
@@ -16,8 +16,6 @@
     zihao=-4
 ]{ctexbook}
 
-%\def\@printtwoside{0} % 设置文章为电子版格式（不添加多余空白页）
-
 % 配置英文字体
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
@@ -30,7 +28,6 @@
 \RequirePackage{booktabs}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
-\RequirePackage{svg}
 \RequirePackage[labelsep=space, justification=centering]{caption}
 \RequirePackage{float}
 \RequirePackage[font=footnotesize]{subcaption}
@@ -68,37 +65,8 @@
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
 \RequirePackage{ragged2e} % for \RaggedRight macro
 
-% Insert a TRUE blank page which has no header or footer
-\let\origdoublepage\cleardoublepage
-\newcommand{\clearemptydoublepage}{
-    \clearpage{
-        \pagestyle{empty}
-        \origdoublepage
-    }
-}
-% 定义了一种新的clearpage方式，允许一个变量切换电子版及双面打印版
-%\newcommand{\newclearpage}{
-%    \if\@printtwoside1
-%        \clearemptydoublepage
-%    \else
-%        \clearpage
-%    \fi
-%}
-
-% 设定时间为中文日期
-%\ctexset{today=small}
-%
-%% 定义英文日期格式
-%\newcommand\etoday{
-%  \hspace{0.5\ccwd} \monthname[\the\month]\hspace{2\ccwd} \nth{\the\day}{\hspace{1\ccwd}} \the\year
-%}
-
 \AtBeginDocument{
     \hypersetup{
-        citecolor=green,
-        filecolor=black,
-        linkcolor=black,
-        urlcolor=black,
         CJKbookmarks=true,
         pdftitle={\@ctitle},
         pdfauthor={\@cauthor},
@@ -114,10 +82,6 @@
 \setlist[itemize]{nosep}
 \setlist[description]{nosep}
 
-% 页眉、页脚、脚注设定
-% 采用带圈数字符号代替*号脚注
-% 正式的论文中一般很少出现脚注，若需要进行脚注，则解除下一行的注释
-% \xeCJKsetcharclass{`①}{`⑩}{1}
 % 默认页面页眉页脚样式
 \fancypagestyle{plain}{
     \fancyhf{}
@@ -310,7 +274,7 @@
 		{\zihao{3}\heiti\textbf{摘\hspace{2em}要}}  % issue #4
         \addcontentsline{toc}{chapter}{摘要}
 	\end{center}		
-		\begin{spacing}{1.6}
+		\begin{spacing}{1.5}
 			\zihao{-4} \songti\@cabstract
 		\end{spacing}
         \vspace{\baselineskip}
@@ -336,7 +300,7 @@
 		{\zihao{3}\textbf{ABSTRACT}}  % issue #4
         \addcontentsline{toc}{chapter}{ABSTRACT}
 	\end{center}
-		\begin{spacing}{1.6}
+		\begin{spacing}{1.5}
 			\zihao{-4} \@eabstract
 		\end{spacing}
         \vspace{\baselineskip}
