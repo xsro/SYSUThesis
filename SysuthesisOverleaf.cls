@@ -13,7 +13,7 @@
     a4paper,
     %openright,
     openany,
-    zihao=-4
+    %zihao=-4
 ]{ctexbook}
 
 % 配置英文字体
@@ -67,11 +67,7 @@
 
 \AtBeginDocument{
     \hypersetup{
-        CJKbookmarks=true,
-        pdftitle={\@ctitle},
-        pdfauthor={\@cauthor},
-        pdfkeywords={\@ckeywords},
-        pdfcreator={LaTeX with hyperref package, using SYSU undergraduate Thesis LaTeX Template}
+        CJKbookmarks=true
     }
 }
 \pagestyle{fancy}
@@ -421,9 +417,7 @@
 % 附录样式
 \renewcommand\appendix{\par
     \@mainmattertrue
-    \fancypagestyle{plain}{
-        %\fancyhead[R]{\zihao{-5} 附录\thechapter \leftmark}
-    }
+    \fancypagestyle{plain}{}
     \pagestyle{plain}
     \setcounter{chapter}{0}
     \setcounter{section}{0}
