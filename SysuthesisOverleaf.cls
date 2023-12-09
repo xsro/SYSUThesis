@@ -6,13 +6,13 @@
 
 \LoadClass[
     %fontset=adobe,
-    %fontset=fandol,  % 可用于overleaf的中文字体库
+    fontset=fandol,  % 可用于overleaf的中文字体库
     %fontset=ubuntu,
     %fontset=mac,
     %fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
     a4paper,
     %openright,
-    openany,
+    openany
     %zihao=-4
 ]{ctexbook}
 
@@ -66,9 +66,7 @@
 \RequirePackage{ragged2e} % for \RaggedRight macro
 
 \AtBeginDocument{
-    \hypersetup{
-        CJKbookmarks=true
-    }
+    \hypersetup{CJKbookmarks=true}
 }
 \pagestyle{fancy}
 
@@ -112,27 +110,33 @@
 
 % 目录标题：小三号黑体
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\heiti}
-\renewcommand{\cftlottitlefont}{\hfill\zihao{-3}\heiti}
-\renewcommand{\cftloftitlefont}{\hfill\zihao{-3}\heiti}
+%\renewcommand{\cftlottitlefont}{\hfill\zihao{-3}\heiti}
+%\renewcommand{\cftloftitlefont}{\hfill\zihao{-3}\heiti}
 
 % 目录两个字中间增加空格
 \renewcommand\contentsname{\centerline{目\hspace{2em}录}}
 
 % 目录中的内容：小四号宋体
 % 目录中章节标题
-\renewcommand{\cftchapfont}{\zihao{-4}\songti}
-\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
+%\renewcommand{\cftchapfont}{\zihao{-4}\songti}
+%\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
+\renewcommand{\cftchapfont}{\songti}
+\renewcommand{\cftchappagefont}{\songti}
 
 % 目录中其他内容
-\renewcommand{\cftsecfont}{\zihao{-4}\songti}
-\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
-\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
-\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songti}
+%\renewcommand{\cftsecfont}{\zihao{-4}\songti}
+%\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
+%\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
+%\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songti}
+\renewcommand{\cftsecfont}{\songti}
+\renewcommand{\cftsecpagefont}{\songti}
+\renewcommand{\cftsubsecfont}{\songti}
+\renewcommand{\cftsubsecpagefont}{\songti}
 \setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 
-\renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cftafterlottitle}{\hfill}
-\renewcommand{\cftafterloftitle}{\hfill}
+%\renewcommand{\cftaftertoctitle}{\hfill}
+%\renewcommand{\cftafterlottitle}{\hfill}
+%\renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 \renewcommand{\cftdotsep}{0.1}   % 调整指引线间距
 
