@@ -2,8 +2,6 @@ main_blind.pdf
 main_print.pdf
 # 当不需要将生成的pdf同步时，可删去上面两行前的#号和空格
 
-/.vscode
-
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
