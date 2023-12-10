@@ -105,8 +105,6 @@
 % 目录设定，使用tocloft宏包
 \setcounter{secnumdepth}{3} % depth of toc, 2
 \setcounter{tocdepth}{1}
-% 如果要在目录中显示子章节请换用下面这行(目录中显示到x.y.z章)，如果不用这行默认显示到x.y章。
-% \setcounter{tocdepth}{2}
 
 % 目录标题：小三号黑体
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\heiti}
@@ -120,18 +118,12 @@
 % 目录中章节标题
 %\renewcommand{\cftchapfont}{\zihao{-4}\songti}
 %\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
-\renewcommand{\cftchapfont}{\songti}
-\renewcommand{\cftchappagefont}{\songti}
 
 % 目录中其他内容
 %\renewcommand{\cftsecfont}{\zihao{-4}\songti}
 %\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
 %\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
 %\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songti}
-\renewcommand{\cftsecfont}{\songti}
-\renewcommand{\cftsecpagefont}{\songti}
-\renewcommand{\cftsubsecfont}{\songti}
-\renewcommand{\cftsubsecpagefont}{\songti}
 \setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 
 %\renewcommand{\cftaftertoctitle}{\hfill}
@@ -271,7 +263,7 @@
 		\end{tabular}
 		\vspace{\baselineskip}\\
         \phantomsection
-		{\zihao{3}\heiti\textbf{摘\hspace{2em}要}}  % issue #4
+		{\zihao{3}\heiti{摘\hspace{2em}要}}  % issue #4
         \addcontentsline{toc}{chapter}{摘要}
 	\end{center}		
 		\begin{spacing}{1.5}
@@ -385,6 +377,11 @@
                 titleformat = {\zihao{-2}\heiti}
             }
         }
+        % 每一个引用之间不添加多余间距
+        \setlength{\bibsep}{0em}
+        % 引用样式
+        \bibliographystyle{bibtex-style/gbt7714-numerical}
+        {\zihao{5}\rmfamily\songti\bibliography{reference}}    % 引用文献列表
     \endgroup
 }
 
