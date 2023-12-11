@@ -1,5 +1,6 @@
 main_blind.pdf
 main_print.pdf
+presentation/pre.pdf
 # 当不需要将生成的pdf同步时，可删去上面两行前的#号和空格
 
 ## Core latex/pdflatex auxiliary files:
@@ -40,6 +41,8 @@ main_print.pdf
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+*.nav
+*.snm
 
 ## Build tool directories for auxiliary files
 # latexrun

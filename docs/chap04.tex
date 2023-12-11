@@ -82,11 +82,10 @@ func()
 \lstinputlisting[style=sysucpp]{code/demo.cpp}
 
 \section{算法/伪代码的插入}
-插入扩展卡尔曼滤波（Extended Kalman Filter，EKF）伪代码流程如算法 \ref{alg.EKF} 所示。
+插入扩展卡尔曼滤波（Extended Kalman Filter，EKF）伪代码流程如算法 \ref{alg:EKF} 所示。
 \begin{algorithm}[H]
-    \small
     \caption{EKF 伪代码}
-    \label{alg.EKF}
+    \label{alg:EKF}
     \begin{algorithmic}[htbp]
 		\Require{$\hat{x}_{k - 1}$ $\hat{P}_{k - 1}$ $u_{k - 1}$ $y_k$}
 		\Ensure{$\hat{x}_k$ $\hat{P}_k$}

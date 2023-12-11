@@ -116,8 +116,8 @@
 
 % 目录中的内容：小四号宋体
 % 目录中章节标题
-%\renewcommand{\cftchapfont}{\zihao{-4}\songti}
-%\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
+\renewcommand{\cftchapfont}{\zihao{-4}\songti}
+\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
 
 % 目录中其他内容
 %\renewcommand{\cftsecfont}{\zihao{-4}\songti}
