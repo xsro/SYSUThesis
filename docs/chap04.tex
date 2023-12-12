@@ -82,25 +82,30 @@ func()
 \lstinputlisting[style=sysucpp]{code/demo.cpp}
 
 \section{算法流程图}
-插入扩展卡尔曼滤波（Extended Kalman Filter，EKF）伪代码流程如算法 \ref{alg:EKF} 所示。
-\begin{algorithm}[H]
-    \caption{卡尔曼滤波}
-    \label{alg:EKF}
-    \begin{algorithmic}[htbp]
-		\Require{$\hat{x}_{k - 1}$ $\hat{P}_{k - 1}$ $u_{k - 1}$ $y_k$}
-		\Ensure{$\hat{x}_k$ $\hat{P}_k$}
-        \Statex
-        \Function{EKF}{}
-        \State $\hat{x}_{0} \gets \text{初始化}$
-        \State $\hat{P}_{0} \gets \text{初始化}$
-        \For {$k \gets 1$ to $N$}
-        \State $ \hat{x}_{k}^{-} \gets g(\hat{x}_{k-1},\mu _{k-1})$
-        \State $ P_{k}^{-} \gets A P_{k-1} A^T + Q^w_k $
-        \State $ K_k \gets P_{k}^{-} H^T ( H P_{k}^{-} H^T + R^v_k )^{-1} $
-        \State $ \hat{x}_k \gets \hat{x}_{k}^{-} + K_k\left( y_k - H \hat{x}_{k}^{-} \right) $
-        \State $ \hat{P}_k \gets \left( I - K_k H \right) P_{k}^{-} $
-        \EndFor
-        \State \Return $ \hat{x}_N, P_N $
-        \EndFunction
-    \end{algorithmic}
+\label{sec:algorithm}
+\normalem
+\begin{algorithm}[h]
+    \KwIn{$m$个训练样本}
+    \lFor{$l=1$ \emph{\KwTo} $n_l$}{
+        初始化：$\Delta \mybold{W}^{(l)}=0$，$\Delta \mybold{b}^{(l)}=0$}
+    \ForEach{训练样本}{
+        \lFor{$l=1$ \emph{\KwTo} $n_l-1$}{
+            前向传播：$\mybold{z}^{(l+1)}=\mybold{W}^la^l+\mybold{b}^l$,$\mybold{a}^{(l+1)}=f(\mybold{z}^{(l+1)})$}
+        输出误差计算：$\delta^{(n_l)} = \frac{\partial}{\partial \mybold{z}^{(n_l)}} J(\mybold{W},\mybold{b};\mybold{x},y)$\;
+        \lFor{$l=n_l-1$ \emph{\KwTo} $1$}{
+            后向传播：$\delta^{(l)} = \bigl((\mybold{W}^{(l)})^T \delta^{(l+1)}\bigr)f'(\mybold{z}^{(l)})$}
+        \ForAll{层l}{
+            计算梯度：$\nabla_{\mybold{W}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)=\delta^{(l+1)}(\mybold{a}^{(l)})^T$ \\
+            \hspace{60pt}$\nabla_{\mybold{b}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)=\delta^{(l+1)}$\;
+            累加梯度：$\Delta \mybold{W}^{(l)} \leftarrow \Delta \mybold{W}^{(l)} + \nabla_{\mybold{W}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)$; \\
+            \hspace{60pt}$\Delta \mybold{b}^{(l)} \leftarrow \Delta \mybold{b}^{(l)} + \nabla_{\mybold{b}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)$\;
+        }
+    }
+    \ForAll{层$l$}{
+        更新权重：$\mybold{W}^{(l)} \leftarrow \mybold{W}^{(l)} - \alpha \biggl[\frac 1m \Delta \mybold{W}^{(l)}\biggr]$ \\
+        \hspace{60pt} $\mybold{b}^{(l)} \leftarrow \mybold{b}^{(l)} - \alpha \biggl[\frac 1m \Delta \mybold{b}^{(l)}\biggr]$
+    }
+    \caption{梯度下降算法}
+    \label{algo:sgd}
 \end{algorithm}
+\ULforem
