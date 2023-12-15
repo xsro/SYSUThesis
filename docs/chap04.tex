@@ -85,27 +85,23 @@ func()
 \label{sec:algorithm}
 \normalem
 \begin{algorithm}[h]
-    \KwIn{$m$个训练样本}
-    \lFor{$l=1$ \emph{\KwTo} $n_l$}{
-        初始化：$\Delta \mybold{W}^{(l)}=0$，$\Delta \mybold{b}^{(l)}=0$}
-    \ForEach{训练样本}{
-        \lFor{$l=1$ \emph{\KwTo} $n_l-1$}{
-            前向传播：$\mybold{z}^{(l+1)}=\mybold{W}^la^l+\mybold{b}^l$,$\mybold{a}^{(l+1)}=f(\mybold{z}^{(l+1)})$}
-        输出误差计算：$\delta^{(n_l)} = \frac{\partial}{\partial \mybold{z}^{(n_l)}} J(\mybold{W},\mybold{b};\mybold{x},y)$\;
-        \lFor{$l=n_l-1$ \emph{\KwTo} $1$}{
-            后向传播：$\delta^{(l)} = \bigl((\mybold{W}^{(l)})^T \delta^{(l+1)}\bigr)f'(\mybold{z}^{(l)})$}
-        \ForAll{层l}{
-            计算梯度：$\nabla_{\mybold{W}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)=\delta^{(l+1)}(\mybold{a}^{(l)})^T$ \\
-            \hspace{60pt}$\nabla_{\mybold{b}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)=\delta^{(l+1)}$\;
-            累加梯度：$\Delta \mybold{W}^{(l)} \leftarrow \Delta \mybold{W}^{(l)} + \nabla_{\mybold{W}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)$; \\
-            \hspace{60pt}$\Delta \mybold{b}^{(l)} \leftarrow \Delta \mybold{b}^{(l)} + \nabla_{\mybold{b}^{(l)}}J(\mybold{W},\mybold{b};\mybold{x},y)$\;
-        }
-    }
-    \ForAll{层$l$}{
-        更新权重：$\mybold{W}^{(l)} \leftarrow \mybold{W}^{(l)} - \alpha \biggl[\frac 1m \Delta \mybold{W}^{(l)}\biggr]$ \\
-        \hspace{60pt} $\mybold{b}^{(l)} \leftarrow \mybold{b}^{(l)} - \alpha \biggl[\frac 1m \Delta \mybold{b}^{(l)}\biggr]$
-    }
-    \caption{梯度下降算法}
-    \label{algo:sgd}
-\end{algorithm}
-\ULforem
+	\SetAlgoLined
+	\KwData{this text}
+	\KwResult{how to write algorithm with \LaTeX2e }
+  
+	initialization\;
+	\While{not at end of this document}{
+	  read current\;
+	  \eIf{understand}{
+		go to next section\;
+		current section becomes this one\;
+	  }{
+		go back to the beginning of current section\;
+	  }
+	}
+	\caption{算法示例1}
+	\label{algo:algorithm1}
+  \end{algorithm}
+  \ULforem
+
+  加脚注\footnote{测试一下脚注}

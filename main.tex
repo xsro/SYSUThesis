@@ -1,9 +1,6 @@
 % 作者：1FCENdoge
 %%
-% 下面两行代码2选1，分别适用于overleaf环境下的编译和windows下的编译
-\documentclass{SysuthesisOverleaf}
-%\documentclass{SysuthesisWindows}
-
+\documentclass{sysuthesis}
 \usepackage{sysucode}  % 在论文中使用代码
 
 \input{docs/info}     % 论文相关信息
@@ -25,14 +22,12 @@
 % 论文主体部分
 \mainmatter
 % 正文
-% 硕士学位论文一般有5到6章，博士学位论文一般有6到7章
 \include{docs/chap01}
 \include{docs/chap02}
 \include{docs/chap03}
 \include{docs/chap04}
 \include{docs/chap05}
-%\include{docs/chap06}
-%\include{docs/chap07}
+
 
 % 附录部分
 \backmatter
@@ -40,10 +35,11 @@
 % 实际上参考文献是属于论文主体部分
 \makereferences
 \include{docs/publications}
+% 盲审时，发表成果用下面这行
+% \include{docs/publications_blind}
 % 附录
 \begin{appendix}
     \include{docs/appendix1}
-    \include{docs/appendix2}
 \end{appendix}
 % 致谢
 \include{docs/ack}

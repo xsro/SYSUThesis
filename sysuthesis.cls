@@ -1,17 +1,13 @@
 % 定义模板样式
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{SysuthesisOverleaf}[2022/05/06 Sun Yat-Sen University undergraduate thesis document class]
+\ProvidesClass{sysuthesis}[2022/05/06 Sun Yat-Sen University undergraduate thesis document class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
 \LoadClass[
-    %fontset=adobe,
     fontset=fandol,  % 可用于overleaf的中文字体库
-    %fontset=ubuntu,
-    %fontset=mac,
     %fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
     a4paper,
-    %openright,
     openany
     %zihao=-4
 ]{ctexbook}
@@ -20,8 +16,8 @@
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 % 解决宋体无法加粗问题（https://zhuanlan.zhihu.com/p/505601359）
-%\setCJKmainfont{SimSun}[AutoFakeBold]
-% 若出现生僻字无法显示或者需要使用windows自带字体，则解除上面一行的注释状态即可
+% 若出现生僻字无法显示或者需要使用windows自带字体，使用下面这行
+% \setCJKmainfont{SimSun}[AutoFakeBold]
 
 \RequirePackage{fancyhdr}
 \RequirePackage[margin=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
@@ -55,13 +51,9 @@
 \RequirePackage{emptypage}
 \RequirePackage{ulem}
 % 算法、伪代码
-\RequirePackage[chinese,onelanguage,linesnumbered,algochapter,ruled,vlined]{packages/algorithm2e}
-% \RequirePackage[chapter]{algorithm}
-% \RequirePackage{algpseudocode}
-% \floatname{algorithm}{算法}  
-% \renewcommand{\algorithmicrequire}{\textbf{输入：}}  
-% \renewcommand{\algorithmicensure}{\textbf{输出：}} 
-% \algrenewcommand\textproc{}
+\RequirePackage[linesnumbered,algochapter,ruled,vlined]{algorithm2e}
+\renewcommand{\algorithmcfname}{算法}
+\SetAlgoCaptionSeparator{\unskip\hspace*{\ccwd}}
 
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
 \RequirePackage{ragged2e} % for \RaggedRight macro
@@ -73,9 +65,12 @@
 
 % 有序与无序列表环境
 \setlist[enumerate]{nosep}
-\renewcommand\labelenumi{\theenumi)}
+\renewcommand\labelenumi{(\theenumi)}
 \setlist[itemize]{nosep}
 \setlist[description]{nosep}
+
+% 采用带圈数字符号作脚注
+\xeCJKsetcharclass{`①}{`⑩}{1}
 
 % 默认页面页眉页脚样式
 \fancypagestyle{plain}{
@@ -107,12 +102,8 @@
 \setcounter{secnumdepth}{3} % depth of toc, 2
 \setcounter{tocdepth}{1}
 
-% 目录标题：小三号黑体
+% 目录标题：小三号黑体，目录两个字中间增加空格
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\heiti}
-%\renewcommand{\cftlottitlefont}{\hfill\zihao{-3}\heiti}
-%\renewcommand{\cftloftitlefont}{\hfill\zihao{-3}\heiti}
-
-% 目录两个字中间增加空格
 \renewcommand\contentsname{\centerline{目\hspace{2em}录}}
 
 % 目录中的内容：小四号宋体
@@ -121,15 +112,7 @@
 \renewcommand{\cftchappagefont}{\zihao{-4}\songti}
 
 % 目录中其他内容
-%\renewcommand{\cftsecfont}{\zihao{-4}\songti}
-%\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
-%\renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
-%\renewcommand{\cftsubsecpagefont}{\zihao{-4}\songti}
 \setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
-
-%\renewcommand{\cftaftertoctitle}{\hfill}
-%\renewcommand{\cftafterlottitle}{\hfill}
-%\renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 \renewcommand{\cftdotsep}{0.1}   % 调整指引线间距
 
@@ -454,6 +437,7 @@
 \RequirePackage[hidelinks, hyperfootnotes=true]{hyperref}
 \RequirePackage{footnotebackref}
 
+% 脚注只能标号①-⑩，超出标号会出现错误
 \renewcommand{\@fnsymbol}[1]{
     \ifcase#1\or \text{①}\or \text{②}\or \text{③}\or    \text{④}\or \text{⑤}\or \text{⑥}\or \text{⑦}\or \text{⑧} \or \text{⑨} \or \text{⑩}
     \else
