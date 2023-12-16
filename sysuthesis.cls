@@ -101,17 +101,21 @@
 % 目录设定，使用tocloft宏包
 \setcounter{secnumdepth}{3} % depth of toc, 2
 \setcounter{tocdepth}{1}
+% 如果要在目录中显示子章节请换用下面这行(目录中显示到x.y.z章)，如果不用这行默认显示到x.y章。
+\setcounter{tocdepth}{2}
 
-% 目录标题：小三号黑体，目录两个字中间增加空格
-\renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\heiti}
+% 目录标题：小二号黑体，目录两个字中间增加空格
+\renewcommand{\cfttoctitlefont}{\hfill\zihao{-2}\heiti}
 \renewcommand\contentsname{\centerline{目\hspace{2em}录}}
 
-% 目录中的内容：小四号宋体
-% 目录中章节标题
-\renewcommand{\cftchapfont}{\zihao{-4}\songti}
-\renewcommand{\cftchappagefont}{\zihao{-4}\songti}
+% 目录中章标题为四号宋体，节标题为小四号宋体，小节标题为小四号仿宋
+\renewcommand{\cftchapfont}{\zihao{4}\songti}
+\renewcommand{\cftchappagefont}{\zihao{4}\songti}
+\renewcommand{\cftsecfont}{\zihao{-4}\songti}
+\renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
+\renewcommand{\cftsubsecfont}{\zihao{-4}\fangsong}
+\renewcommand{\cftsubsecpagefont}{\zihao{-4}\fangsong}
 
-% 目录中其他内容
 \setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 \renewcommand{\cftdotsep}{0.1}   % 调整指引线间距
@@ -235,11 +239,11 @@
 
 \newcommand\makecabstract{
 	\begin{center}
-		\zihao{3}
+		\zihao{-2}
 		\mbox{ }\\
 		\heiti{论文题目：\@ctitle} 
 		\vspace{\baselineskip}\\
-		\zihao{-3}\songti
+		\zihao{3}\songti
 		\begin{tabular}{l}
 			专\hspace{2\ccwd}业：\@cmajor \\
 			硕\hspace{0.5\ccwd}士\hspace{0.5\ccwd}生：\@cauthor \\
@@ -247,7 +251,7 @@
 		\end{tabular}
 		\vspace{\baselineskip}\\
         \phantomsection
-		{\zihao{3}\heiti{摘\hspace{2em}要}}  % issue #4
+		{\zihao{-2}\heiti{摘\hspace{2em}要}}  % issue #4
         \addcontentsline{toc}{chapter}{摘要}
 	\end{center}		
 		\begin{spacing}{1.5}
@@ -261,11 +265,11 @@
 % 英文摘要、关键字内容：小四号新罗马体(Time New Roman)
 \newcommand\makeeabstract{
 	\begin{center}
-		\zihao{3}
+		\zihao{-2}
 		\mbox{ }\\
 		\textbf{Title: \@etitle} 
 		\vspace{\baselineskip}\\
-		\zihao{-3}
+		\zihao{3}
 		\begin{tabular}{ll}
 			Major: \@emajor \\
 			Name: \@eauthor \\
@@ -273,7 +277,7 @@
 		\end{tabular}
 		\vspace{\baselineskip}\\
         \phantomsection
-		{\zihao{3}\textbf{ABSTRACT}}  % issue #4
+		{\zihao{-2}\textbf{ABSTRACT}}  % issue #4
         \addcontentsline{toc}{chapter}{ABSTRACT}
 	\end{center}
 		\begin{spacing}{1.5}
@@ -297,6 +301,31 @@
     \tableofcontents
     \clearpage
 }
+
+% \newcommand\makenotation{
+%     \chapter{符号说明}%
+%     \pagestyle{plain}
+% }
+  
+  
+%     \pagestyle{plain}%
+%   \fi
+% }%
+% \newcommand*\notationlabel[1]{#1\hfil}%
+% \newenvironment{notationlist}[1]{%
+%   \list{}{%
+%     \itemsep 3bp%
+%     \labelwidth #1\relax%
+%     \labelsep 1em%
+%     \leftmargin\labelwidth
+%     \advance\leftmargin\labelsep
+%     \advance\leftmargin 3em%
+%     \rightmargin 3em%
+%     \let\makelabel\notationlabel
+%   }%
+% }{%
+%   \endlist
+% }
 
 \renewcommand\mainmatter{
     \@mainmattertrue
