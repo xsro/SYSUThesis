@@ -83,6 +83,8 @@
 }
 \pagestyle{plain}
 
+
+
 % 中英文摘要页面样式
 \fancypagestyle{cAbstract}{}
 \fancypagestyle{eAbstract}{}
@@ -302,30 +304,36 @@
     \clearpage
 }
 
-% \newcommand\makenotation{
-%     \chapter{符号说明}%
-%     \pagestyle{plain}
-% }
-  
-  
-%     \pagestyle{plain}%
-%   \fi
-% }%
-% \newcommand*\notationlabel[1]{#1\hfil}%
-% \newenvironment{notationlist}[1]{%
-%   \list{}{%
-%     \itemsep 3bp%
-%     \labelwidth #1\relax%
-%     \labelsep 1em%
-%     \leftmargin\labelwidth
-%     \advance\leftmargin\labelsep
-%     \advance\leftmargin 3em%
-%     \rightmargin 3em%
-%     \let\makelabel\notationlabel
-%   }%
-% }{%
-%   \endlist
-% }
+\fancypagestyle{headings}{\fancyfoot{}}
+\newcommand\NNchapter[1]{%
+	\if@mainmatter%
+	\@mainmatterfalse%
+	\chapter{#1}%
+	\@mainmattertrue%
+	\else
+	\chapter{#1}%
+	\fi}
+\def\SYSU@label@notations{符号说明}
+\newenvironment{notation}{%
+	\NNchapter{\SYSU@label@notations}%
+	\thispagestyle{headings}
+}{}
+\newcommand*\notationlabel[1]{#1\hfil}%
+\newenvironment{notationlist}[1]{%
+	\list{}{%
+		\itemsep 3bp%
+		\labelwidth #1\relax%
+		\labelsep 1em%
+		\leftmargin\labelwidth
+		\advance\leftmargin\labelsep
+		\advance\leftmargin 3em%
+		\rightmargin 3em%
+		\let\makelabel\notationlabel
+	}%
+}{%
+	\endlist
+}
+
 
 \renewcommand\mainmatter{
     \@mainmattertrue
@@ -427,7 +435,7 @@
 {\def\@noitemerr
 	{\@latex@warning{Empty `publications' environment}}%
 	\endlist}
-
+	
 % 附录样式
 \renewcommand\appendix{\par
     \@mainmattertrue
