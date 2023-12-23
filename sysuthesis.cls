@@ -28,6 +28,9 @@
 \RequirePackage{float}
 \RequirePackage[font=footnotesize]{subcaption}
 \RequirePackage{amsmath,amssymb,amsthm}
+% 设置公式字体为 XITS Math 或者 STIX Two Math，这两种字体与 Times New Roman 接近，以保证字体统一
+\RequirePackage{unicode-math}
+	\setmathfont{XITS Math}
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage[section]{placeins}
@@ -106,8 +109,8 @@
 % 如果要在目录中显示子章节请换用下面这行(目录中显示到x.y.z章)，如果不用这行默认显示到x.y章。
 \setcounter{tocdepth}{2}
 
-% 目录标题：小二号黑体，目录两个字中间增加空格
-\renewcommand{\cfttoctitlefont}{\hfill\zihao{-2}\heiti}
+% 目录标题：三号黑体，目录两个字中间增加空格
+\renewcommand{\cfttoctitlefont}{\hfill\zihao{3}\heiti}
 \renewcommand\contentsname{\centerline{目\hspace{2em}录}}
 
 % 目录中章标题为四号宋体，节标题为小四号宋体，小节标题为小四号仿宋
@@ -219,7 +222,7 @@
 \newcommand\makedisclaim{
     \ctexset {
         chapter = {
-			titleformat = {\zihao{-2}\heiti},
+			titleformat = {\zihao{3}\heiti},
             beforeskip = {10pt},
             afterskip = {30pt}
         }
@@ -241,11 +244,11 @@
 
 \newcommand\makecabstract{
 	\begin{center}
-		\zihao{-2}
+		\zihao{3}
 		\mbox{ }\\
 		\heiti{论文题目：\@ctitle} 
 		\vspace{\baselineskip}\\
-		\zihao{3}\songti
+		\zihao{4}\songti
 		\begin{tabular}{l}
 			专\hspace{2\ccwd}业：\@cmajor \\
 			硕\hspace{0.5\ccwd}士\hspace{0.5\ccwd}生：\@cauthor \\
@@ -253,8 +256,7 @@
 		\end{tabular}
 		\vspace{\baselineskip}\\
         \phantomsection
-		{\zihao{-2}\heiti{摘\hspace{2em}要}}  % issue #4
-        \addcontentsline{toc}{chapter}{摘要}
+		{\zihao{3}\heiti{摘\hspace{2em}要}}
 	\end{center}		
 		\begin{spacing}{1.5}
 			\zihao{-4} \songti\@cabstract
@@ -267,11 +269,11 @@
 % 英文摘要、关键字内容：小四号新罗马体(Time New Roman)
 \newcommand\makeeabstract{
 	\begin{center}
-		\zihao{-2}
+		\zihao{3}
 		\mbox{ }\\
 		\textbf{Title: \@etitle} 
 		\vspace{\baselineskip}\\
-		\zihao{3}
+		\zihao{4}
 		\begin{tabular}{ll}
 			Major: \@emajor \\
 			Name: \@eauthor \\
@@ -279,8 +281,7 @@
 		\end{tabular}
 		\vspace{\baselineskip}\\
         \phantomsection
-		{\zihao{-2}\textbf{ABSTRACT}}  % issue #4
-        \addcontentsline{toc}{chapter}{ABSTRACT}
+		{\zihao{3}\textbf{ABSTRACT}}
 	\end{center}
 		\begin{spacing}{1.5}
 			\zihao{-4} \@eabstract
@@ -299,6 +300,10 @@
 	\clearpage
 }
 \newcommand\maketableofcontents{
+	% 设置目录标题与页眉的距离
+	\setlength{\cftbeforetoctitleskip}{1em}
+	% 设置目录标题与目录正文的距离
+	\setlength{\cftaftertoctitleskip}{1em}
     \tocloftpagestyle{plain}
     \tableofcontents
     \clearpage
@@ -308,10 +313,22 @@
 \newcommand\NNchapter[1]{%
 	\if@mainmatter%
 	\@mainmatterfalse%
-	\chapter{#1}%
+	\ctexset {
+		chapter = {
+			format = {\centering},
+			titleformat = {\zihao{3}\heiti}
+		}
+	}
+	\chapter*{#1}%
 	\@mainmattertrue%
 	\else
-	\chapter{#1}%
+	\ctexset {
+		chapter = {
+			format = {\centering},
+			titleformat = {\zihao{3}\heiti}
+		}
+	}
+	\chapter*{#1}%
 	\fi}
 \def\SYSU@label@notations{符号说明}
 \newenvironment{notation}{%
@@ -344,16 +361,18 @@
             beforeskip = {0pt},
             afterskip = {16.5pt},
             format = {\centering},
-            nameformat = {\zihao{-2}\heiti},
-            titleformat = {\zihao{-2}\heiti}
+            name = {第~, ~章},
+            number = \arabic{chapter},
+            nameformat = {\zihao{3}\heiti},
+            titleformat = {\zihao{3}\heiti}
         },
         section = {
             %fixskip = true,
             beforeskip = {13pt},
             afterskip = {13pt},
             format = {},
-            nameformat = {\zihao{-3}\bfseries},
-            titleformat = {\zihao{-3}\bfseries}
+            nameformat = {\zihao{4}\heiti},
+            titleformat = {\zihao{4}\heiti}
         },
         subsection = {
             %fixskip = true,
@@ -395,7 +414,7 @@
         \ctexset {
             chapter = {
                 format = {\centering},
-                titleformat = {\zihao{-2}\heiti}
+                titleformat = {\zihao{3}\heiti}
             }
         }
         % 每一个引用之间不添加多余间距
@@ -451,13 +470,13 @@
     \ctexset {
         chapter = {
             format = {\centering},
-            nameformat = {\zihao{-2}\heiti},
-            titleformat = {\zihao{-2}\heiti},
+            nameformat = {\zihao{3}\heiti},
+            titleformat = {\zihao{3}\heiti},
         },
         section = {
             format = {\centering},
-            nameformat = {\zihao{-3}\bfseries},
-            titleformat = {\zihao{-3}\bfseries}
+            nameformat = {\zihao{4}\heiti},
+            titleformat = {\zihao{4}\heiti}
         },
         subsection = {
             format = {\centering},
