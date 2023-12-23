@@ -1,5 +1,7 @@
 # docker 镜像使用说明
 
+**注意：此为其他贡献者提供的docker镜像，TeX Live版本或者其它配置与本模板所使用的可能有所出入，建议谨慎使用或者根据互联网上其它教程自行搭建**
+
 目前镜像位于 [docker hub](https://hub.docker.com/r/marcantoine153/texlive-full)
 
 本镜像一共有两个版本：
