@@ -60,6 +60,8 @@
 
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
 \RequirePackage{ragged2e} % for \RaggedRight macro
+\RequirePackage{pgfplots} % 作图宏包
+\RequirePackage{notoccite} % Fix <https://github.com/SYSU-SCC/sysu-thesis/issues/71>
 
 \AtBeginDocument{
     \hypersetup{CJKbookmarks=true}
@@ -112,6 +114,8 @@
 % 目录标题：三号黑体，目录两个字中间增加空格
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{3}\heiti}
 \renewcommand\contentsname{\centerline{目\hspace{2em}录}}
+\renewcommand{\cftlottitlefont}{\hfill\zihao{3}\heiti}
+\renewcommand{\cftloftitlefont}{\hfill\zihao{3}\heiti}
 
 % 目录中章标题为四号宋体，节标题为小四号宋体，小节标题为小四号仿宋
 \renewcommand{\cftchapfont}{\zihao{4}\songti}
@@ -121,6 +125,19 @@
 \renewcommand{\cftsubsecfont}{\zihao{-4}\fangsong}
 \renewcommand{\cftsubsecpagefont}{\zihao{-4}\fangsong}
 
+% 插图目录
+\renewcommand{\listfigurename}{插图目录}
+\renewcommand{\cftfigfont}{\zihao{-4}\songti}
+\renewcommand{\cftfigpagefont}{\zihao{-4}\songti}
+
+% 表格目录
+\renewcommand{\listtablename}{表格目录}
+\renewcommand{\cfttabfont}{\zihao{-4}\songti}
+\renewcommand{\cfttabpagefont}{\zihao{-4}\songti}
+
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftafterloftitle}{\hfill}
 \setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 \renewcommand{\cftdotsep}{0.1}   % 调整指引线间距
@@ -307,6 +324,13 @@
     \tocloftpagestyle{plain}
     \tableofcontents
     \clearpage
+}
+\newcommand\makelistoffiguretable{
+	\listoffigures
+	\clearpage
+	\listoftables
+	% \thispagestyle{listoffiguretable}
+	\clearpage
 }
 
 \fancypagestyle{headings}{\fancyfoot{}}
