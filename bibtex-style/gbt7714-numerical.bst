@@ -39,6 +39,7 @@ INTEGERS {
   show.medium.type
   short.journal
   italic.journal
+  link.journal
   bold.journal.volume
   show.missing.address.publisher
   space.before.pages
@@ -78,6 +79,7 @@ FUNCTION {load.config}
   "slash" 'component.part.label :=
   #0 'short.journal :=
   #0 'italic.journal :=
+  #0 'link.journal :=
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
   #1 'space.before.pages :=
@@ -1070,6 +1072,10 @@ FUNCTION {format.journal}
         'emphasize
         'skip$
       if$
+      link.journal
+        'add.link
+        'skip$
+      if$
     }
     'skip$
   if$
@@ -1966,6 +1972,10 @@ FUNCTION {preprint}
   format.urldate "" output.after
   output.eprint
   output.url
+  show.preprint not eprint empty$ or
+    'output.doi
+    'skip$
+  if$
   new.block
   format.note output
   fin.entry

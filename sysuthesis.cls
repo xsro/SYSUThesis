@@ -19,8 +19,8 @@
 % 若出现生僻字无法显示或者需要使用windows自带字体，使用下面这行
 % \setCJKmainfont{SimSun}[AutoFakeBold]
 
-\RequirePackage{fancyhdr}
 \RequirePackage[margin=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
+\RequirePackage{fancyhdr}
 \RequirePackage{booktabs}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
@@ -59,9 +59,14 @@
 \SetAlgoCaptionSeparator{\unskip\hspace*{\ccwd}}
 
 \RequirePackage{tabularx} % for 'tabularx' env. and 'X' col. type
-\RequirePackage{ragged2e} % for \RaggedRight macro
+\RequirePackage{ragged2e} % 实现两端对齐
 \RequirePackage{pgfplots} % 作图宏包
-\RequirePackage{notoccite} % Fix <https://github.com/SYSU-SCC/sysu-thesis/issues/71>
+
+\RequirePackage{notoccite} 
+
+% 参考文献引用标记格式：右上角，带方括号
+% 合并相邻的参考文献
+\RequirePackage[comma,square,super,sort&compress]{natbib}
 
 \AtBeginDocument{
     \hypersetup{CJKbookmarks=true}
@@ -87,8 +92,6 @@
     \fancyhead[C]{\zihao{-5}中山大学硕士学位论文}
 }
 \pagestyle{plain}
-
-
 
 % 中英文摘要页面样式
 \fancypagestyle{cAbstract}{}
@@ -124,6 +127,7 @@
 \renewcommand{\cftsecpagefont}{\zihao{-4}\songti}
 \renewcommand{\cftsubsecfont}{\zihao{-4}\fangsong}
 \renewcommand{\cftsubsecpagefont}{\zihao{-4}\fangsong}
+\setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 
 % 插图目录
 \renewcommand{\listfigurename}{插图目录}
@@ -138,11 +142,10 @@
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\cftafterloftitle}{\hfill}
-\setlength{\cftsecindent}{2.3em}        % 小节缩进, 对齐章标题空隙
 \renewcommand{\cftnodots}{\cftdotsep}     % 使用点指示页数
 \renewcommand{\cftdotsep}{0.1}   % 调整指引线间距
+\addtolength{\cftchapnumwidth}{3\ccwd} % 用来设置目录中章节标题离数字的距离
 
-\addtolength{\cftchapnumwidth}{3\ccwd}
 \newcommand\mybold[1]{\textit{\textbf{#1}}}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -326,10 +329,18 @@
     \clearpage
 }
 \newcommand\makelistoffiguretable{
+	% 设置目录标题与页眉的距离
+	\setlength{\cftbeforeloftitleskip}{1em}
+	% 设置目录标题与目录正文的距离
+	\setlength{\cftafterloftitleskip}{2em}
 	\listoffigures
 	\clearpage
+	% 设置目录标题与页眉的距离
+	\setlength{\cftbeforelottitleskip}{1em}
+	% 设置目录标题与目录正文的距离
+	\setlength{\cftafterlottitleskip}{2em}
 	\listoftables
-	% \thispagestyle{listoffiguretable}
+%	\thispagestyle{listoffiguretable}
 	\clearpage
 }
 
@@ -428,9 +439,6 @@
 }
 
 % 参考文献
-% 参考文献引用标记格式：右上角，带方括号
-% 合并相邻的参考文献
-\RequirePackage[comma,square,super,sort&compress]{natbib}
 % 标题与正文章节标题相同
 % 内容小五号宋体
 \newcommand\makereferences{
