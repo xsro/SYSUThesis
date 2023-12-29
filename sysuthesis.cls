@@ -79,8 +79,8 @@
 \setlist[itemize]{nosep}
 \setlist[description]{nosep}
 
-% 采用带圈数字符号作脚注
-\xeCJKsetcharclass{`①}{`⑩}{1}
+% 采用带圈数字1-20作脚注
+\xeCJKsetcharclass{"2460}{"2473}{1}
 
 % 默认页面页眉页脚样式
 \fancypagestyle{plain}{
@@ -525,11 +525,12 @@
 \RequirePackage[hidelinks, hyperfootnotes=true]{hyperref}
 \RequirePackage{footnotebackref}
 
-% 脚注只能标号①-⑩，超出标号会出现错误
-\renewcommand{\@fnsymbol}[1]{
-    \ifcase#1\or \text{①}\or \text{②}\or \text{③}\or    \text{④}\or \text{⑤}\or \text{⑥}\or \text{⑦}\or \text{⑧} \or \text{⑨} \or \text{⑩}
-    \else
-        \@ctrerr
-    \fi
+% 脚注只能标号1-20，超出标号会出现错误
+\newcommand\sysu@textcircled[1]{%
+  \ifnum\value{#1}<21\relax
+    {\symbol{\numexpr\value{#1} + "245F\relax}}%
+  \else
+    \@ctrerr % Cannot display more than 20 footnotes
+  \fi
 }
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\sysu@textcircled{footnote}}
