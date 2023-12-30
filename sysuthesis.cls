@@ -75,7 +75,7 @@
 
 % 有序与无序列表环境
 \setlist[enumerate]{nosep}
-\renewcommand\labelenumi{(\theenumi)}
+\renewcommand\labelenumi{\theenumi)}
 \setlist[itemize]{nosep}
 \setlist[description]{nosep}
 
