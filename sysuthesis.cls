@@ -158,6 +158,7 @@
 \newtheorem{definition}{{定义}}[chapter]
 \newtheorem{remark}{{注记}}[chapter]
 \newtheorem{eg}{例}[chapter]
+\newtheorem{assumption}{{假设}}[chapter]
 
 \renewcommand{\proofname}{{\textbf 证明}}
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
@@ -188,7 +189,7 @@
 \renewcommand\maketitle {
     \begin{titlepage}
         \begin{center}
-            \includegraphics[width=10cm]{image/SYSULogo} \\
+            \includegraphics[width=11cm]{image/SYSULogo} \\
             \vspace{\baselineskip}
             \zihao{1}{中山大学硕士学位论文} \\
             \vspace{1\baselineskip}
@@ -506,12 +507,10 @@
             titleformat = {\zihao{3}\heiti},
         },
         section = {
-            format = {\centering},
             nameformat = {\zihao{4}\heiti},
             titleformat = {\zihao{4}\heiti}
         },
         subsection = {
-            format = {\centering},
             nameformat = {\zihao{-4}\bfseries},
             titleformat = {\zihao{-4}\bfseries}
         }
