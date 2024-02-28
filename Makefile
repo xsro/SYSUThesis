@@ -1,6 +1,6 @@
-src = main
+src = _main
 
-pdf: clean main.tex reference.bib
+pdf: clean $(src).tex reference.bib
 	xelatex $(src)
 	bibtex $(src)
 	xelatex $(src)
