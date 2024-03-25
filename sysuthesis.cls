@@ -85,7 +85,7 @@
 % 默认页面页眉页脚样式
 \fancypagestyle{plain}{
     \fancyhf{}
-    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\headrulewidth}{1pt}
     % 页码位于页脚居中
     \fancyfoot[C]{\zihao{-5}\thepage}
     % 居中式页眉
@@ -226,8 +226,9 @@
 
             \zihao{-5}
             {\centering
-                {二〇二二年五月}
-				% 使用全中文年月，封面会更正式
+            \ctexset{today=big}
+            \today
+			% 使用全中文日期，封面会更正式
             }
 
         \end{center}
