@@ -31,6 +31,7 @@
 % 设置公式字体为 XITS Math 或者 STIX Two Math，这两种字体与 Times New Roman 接近，以保证字体统一
 \RequirePackage{unicode-math}
 	\setmathfont{XITS Math}
+\RequirePackage{CJK,CJKnumb}
 \RequirePackage{listings}
 \RequirePackage{longtable}
 \RequirePackage[section]{placeins}
@@ -226,8 +227,7 @@
 
             \zihao{-5}
             {\centering
-            \ctexset{today=big}
-            \today
+            {二〇二二年五月}
 			% 使用全中文日期，封面会更正式
             }
 
