@@ -4,22 +4,6 @@
 
 ## 如何使用
 
-### overleaf 编辑（在线）
-
-本模板可以使用 [overleaf](https://www.overleaf.com/) 在线编辑，需要在代码页面提前下载 `SYSUThesis-main.zip`压缩包。
-
-步骤如下：
-
-1. 进入 [overleaf](https://overleaf.com) 并登录账号
-2. 左侧 `New Project` 选择 `Upload Project`
-3. 上传 `.zip` 压缩包，建立新项目
-4. 点击 `menu`，滑动到下方 `Settings` 的 `Compiler` 选择 `XeLaTeX`，一般建议选择最新版本
-5. 打开 `main.tex` 文件，点击中间右侧上方的 `Recompile` 进行编译
-6. 如果顺利可以看到 pdf 的预览
-7. 如果无法加载图片只有路径信息，点击 `Recompile` 旁边的倒三角，其中的 `Compile Mode` 选择 `Normal` 模式
-
-此时可以得到完整的 `main.pdf` 文件。
-
 ### TeX Live 编译（本地）
 
 本模板需要使用 TeX Live(>=2017) 进行编译，编译命令如下：
