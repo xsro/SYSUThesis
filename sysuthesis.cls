@@ -331,6 +331,7 @@
 	% 设置目录标题与目录正文的距离
 	\setlength{\cftaftertoctitleskip}{1em}
     \tocloftpagestyle{plain}
+    \setcounter{tocdepth}{1} % 设置目录深度为1，即只显示到section （论文中的章 为 Chapter， 1.1 这种为 Section，上面的目录深度表示 section 的深度）
     \tableofcontents
     \clearpage
 }
