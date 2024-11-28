@@ -5,8 +5,8 @@
 \ProcessOptions\relax
 
 \LoadClass[
-    fontset=fandol,  % 可用于overleaf的中文字体库
-    %fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
+    %fontset=fandol,  % 可用于overleaf的中文字体库
+    fontset=windows, % 出现生僻字无法显示或者需要使用windows自带字体时使用
     a4paper,
     openany
     %zihao=-4
@@ -16,8 +16,7 @@
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 % 解决宋体无法加粗问题（https://zhuanlan.zhihu.com/p/505601359）
-% 若出现生僻字无法显示或者需要使用windows自带字体，使用下面这行
-% \setCJKmainfont{SimSun}[AutoFakeBold]
+\setCJKmainfont{SimSun}[AutoFakeBold]
 
 \RequirePackage[margin=1in, headsep=0.2in, headheight=0.532cm, footskip=0.79cm]{geometry}
 \RequirePackage{fancyhdr}
