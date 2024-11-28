@@ -29,8 +29,8 @@
 \RequirePackage[font=footnotesize]{subcaption}
 \RequirePackage{amsmath,amssymb,amsthm}
 % 设置公式字体为 XITS Math 或者 STIX Two Math，这两种字体与 Times New Roman 接近，以保证字体统一
-\RequirePackage{unicode-math}
-	\setmathfont{XITS Math}
+% \RequirePackage{unicode-math}
+% 	\setmathfont{XITS Math}
 \RequirePackage{CJK,CJKnumb}
 \RequirePackage{listings}
 \RequirePackage{longtable}
@@ -64,6 +64,8 @@
 \RequirePackage{pgfplots} % 作图宏包
 
 \RequirePackage{notoccite} 
+% 条件判断
+\RequirePackage{ifthen}
 
 % 参考文献引用标记格式：右上角，带方括号
 % 合并相邻的参考文献
@@ -90,7 +92,9 @@
     % 页码位于页脚居中
     \fancyfoot[C]{\zihao{-5}\thepage}
     % 居中式页眉
-    \fancyhead[C]{\zihao{-5}中山大学硕士学位论文}
+    % \fancyhead[C]{\zihao{-5}中山大学博士学位论文}
+    % 博士论文奇数页页眉为 "中山大学博士学位论文"，偶数页页眉为论文题目
+    \fancyhead[C]{\ifthenelse{\isodd{\thepage}}{\zihao{-5}中山大学博士学位论文}{\zihao{-5}{\@ctitle}}}
 }
 \pagestyle{plain}
 
@@ -192,7 +196,7 @@
         \begin{center}
             \includegraphics[width=11cm]{image/SYSULogo} \\
             \vspace{\baselineskip}
-            \zihao{1}{中山大学硕士学位论文} \\
+            \zihao{1}{中山大学博士学位论文} \\
             \vspace{1\baselineskip}
 
             % 参考：https://tex.stackexchange.com/a/324204/268488，https://tex.stackexchange.com/a/67582/268488
@@ -249,7 +253,7 @@
             afterskip = {30pt}
         }
     }
-    \input{docs/disclaim}
+    \include{disclaim}
     \thispagestyle{empty}
     \clearpage
 }
@@ -467,7 +471,7 @@
 	\else
 	\chapter{#1}%
 	\fi}
-\def\SYSU@label@publications{攻读硕士学位期间取得的研究成果}
+\def\SYSU@label@publications{攻读博士学位期间取得的研究成果}
 \newenvironment{publications}[1]
 {\Nchapter{\SYSU@label@publications}%
 	\@mkboth{\MakeUppercase\SYSU@label@publications}
