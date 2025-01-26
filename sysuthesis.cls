@@ -252,7 +252,7 @@
             afterskip = {30pt}
         }
     }
-    \include{disclaim}
+    \input{docs/disclaim}
     \thispagestyle{empty}
     \clearpage
 }
